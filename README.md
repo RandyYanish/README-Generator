@@ -6,13 +6,15 @@
 
 This application is to help you generate a professional readme to add to any of your new projects!
 
+## Preview
+
+Watch the [PREVIEW](https://youtu.be/wsuIjG1d_hI) video.
+
 ## Table of Contents:
 
 [Installation](#installation)
 
 [Usage](#usage)
-
-[License](#license)
 
 [Contributing](#contributing)
 
