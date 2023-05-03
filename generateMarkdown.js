@@ -1,9 +1,5 @@
 // Function that returns a license badge based on which license is passed in
 function renderLicenseBadge(license) {
-  if (!license) {
-    return "";
-  }
-
   switch (license) {
     case "MIT":
       return "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
@@ -13,6 +9,8 @@ function renderLicenseBadge(license) {
       return "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)";
     case "BSD 3":
       return "[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)";
+    case "none":
+      return "";
     default:
       return "";
   }
@@ -20,10 +18,6 @@ function renderLicenseBadge(license) {
 
 // Function that returns the license link
 function renderLicenseLink(license) {
-  if (!license) {
-    return "";
-  }
-
   switch (license) {
     case "MIT":
       return "https://opensource.org/licenses/MIT";
@@ -33,6 +27,8 @@ function renderLicenseLink(license) {
       return "https://www.gnu.org/licenses/gpl-3.0";
     case "BSD 3":
       return "https://opensource.org/licenses/BSD-3-Clause";
+    case "none":
+      return "";
     default:
       return "";
   }
@@ -40,53 +36,62 @@ function renderLicenseLink(license) {
 
 // Function that returns the license section of README
 function renderLicenseSection(license) {
-  if (!license) {
+  if (license = "none") {
     return "";
   }
 
-  return `
-## License\n
+  return `## License
 
-This project is licensed under the ${license} license. See [LICENSE](${renderLicenseLink(license)}) for details.
-`;
+This project is licensed under the ${license} license. See [LICENSE](${renderLicenseLink(license)}) for details.`;
 }
 
 
-// TODO: Create a function to generate markdown for README
+// Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}\n
-  ${renderLicenseBadge}\n
+  const license = data.license;
+  return `# ${data.title}
 
-## Description\n
+${renderLicenseBadge(license)}
 
-${data.description}\n
+## Description
 
-### Table of Contents:\n
+${data.description}
 
-[Installation](#installation)\n
-[Usage](#usage)\n
-[License](#license)\n
-[Contributing](#contributing)\n
-[Tests](#tests)\n
-[Questions](#questions)\n
+## Table of Contents:
 
-## Installation\n
+[Installation](#installation)
 
-${data.installation}\n
+[Usage](#usage)
 
-## Usage\n
+[License](#license)
 
-${data.usage}\n
+[Contributing](#contributing)
 
-${renderLicenseSection(license)}\n
+[Tests](#tests)
 
-## Contributing\n
+[Questions](#questions)
 
-## Tests\n
+## Installation
 
-## Questions?\n
+${data.installation}
 
-${data.username}\n
+## Usage
+
+${data.usage}
+
+${renderLicenseSection(license)}
+
+## Contributing
+
+${data.contribution}
+
+## Tests
+
+${data.test}
+
+## Questions?
+
+If you have any questions, please reach out to ${data.username} at ${data.email}.
 `;
 }
 

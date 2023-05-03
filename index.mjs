@@ -1,18 +1,25 @@
-// TODO: Include packages needed for this application
+// Include packages needed for this application
 import inquirer from "inquirer";
 import fs from "fs";
-import generateMarkdown from "./generateMarkdown";
+import generateMarkdown from "./generateMarkdown.js";
 
-// TODO: Create an array of questions for user input
-const questions = ['What is the Title of your project?', 'Write a short description about what your project is about:', 'How can your users install this project and use it?', 'What will this application be used for?', 'What are your guidelines for contributing to this project?', 'How can users test this project?', 'What license are you going to use?', 'What is your Github username?', 'What is your email address?'];
+//Declarations
+const fileName = "README.md"
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+// Create an array of questions for user input
+const questions = ['What is the Title of your project?', 'Write a short description about what your project is about:', 'How can your users install this project and use it?', 'How do you use this application?', 'What are your guidelines for contributing to this project?', 'How can users test this project?', 'What license are you going to use?', 'What is your Github username?', 'What is your email address?'];
 
-// TODO: Create a function to initialize app
+// Create a function to write README file
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) => 
+        err ? console.error(err) : console.log('README created.')
+    );
+}
+
+// Create a function to initialize app
 function init() {
     inquirer    
-        .prompt(
+        .prompt([
             {
                 type: 'input',
                 message: questions[0],
@@ -46,7 +53,7 @@ function init() {
             {
                 type: 'list',
                 message: questions[6],
-                choices: ['MIT', 'Apache 2.0', 'GPL 3.0', 'BSD 3', ''],
+                choices: ['MIT', 'Apache 2.0', 'GPL 3.0', 'BSD 3', 'none', ''],
                 name: 'license'
             },
             {
@@ -59,12 +66,12 @@ function init() {
                 message: questions[8],
                 name: 'email'
             },
-        )
-        // TODO: fix responses and format to write file
-        .then(responses) {
-            responses = data;
-            writeToFile(responses.title, data);
-        };
+        ])
+        // fix responses and format to write file
+        .then((data => {
+            const markdown = generateMarkdown(data);
+            writeToFile(fileName, markdown);
+        }))
 }
 
 // Function call to initialize app
