@@ -7,10 +7,15 @@ This readme generator will take you through the basic questions to create and ge
 ### Table of Contents:
 
 [Installation](#installation)
+
 [Usage](#usage)
+
 [License](#license)
+
 [Contributing](#contributing)
+
 [Tests](#tests)
+
 [Questions](#questions)
 
 ## Installation
