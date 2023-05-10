@@ -48,10 +48,6 @@ Created and developed by:
 
 N/A
 
-## Questions
-
-
-
 ## Acceptance Criteria
 
 ```md
@@ -72,4 +68,10 @@ WHEN I click on the links in the Table of Contents
 THEN I am taken to the corresponding section of the README
 ```
 
+## Links
+
+The project was uploaded to GitHub at the following repository: https://github.com/RandyYanish/README-Generator/
+
+You can access a video of the application here: 
+https://youtu.be/wsuIjG1d_hI
 
